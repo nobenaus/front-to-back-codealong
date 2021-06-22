@@ -7,10 +7,6 @@ import { sql } from './postgresConfig';
 //
 // 1. Please create a function getArtists() that perform a SQL query to our database and return an array of artists
 
-export async function getArtists() {
-  // add code here...
-}
-
 // After task is complete
 // - add the following code to "scripts" in package.json
 //    "heroku-postbuild": "yarn migrate up && yarn build",
@@ -21,6 +17,13 @@ export async function getArtists() {
   SELECT * FROM artists
   `;
   return artists;
+}
+
+export async function getAlbums() {
+  const albums = await sql`
+  SELECT * FROM albums
+  `;
+  return albums;
 }
 
 export async function getGenres() {
