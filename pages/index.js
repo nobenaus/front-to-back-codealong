@@ -1,4 +1,4 @@
-export default function Home() {
+
   // -------------------------------------
   // ---------- STARTING SECTION ---------
   // -------------------------------------
@@ -19,12 +19,95 @@ export default function Home() {
   // TODO: ADD UpLeveled leaning LINK OR INSTRUCTIONS TO WHERE TO CONTINUE
   // - after that please go to the next step in the first file in migrations directory
 
-  return (
-    <div>
-      <h1>SOUNDIFY</h1>
-    </div>
-  );
-}
+import { albumList, artistList, genreList } from '../assets/additionalAssets';
+import { songList } from '../assets/songList';
+import { AudioPlayer } from '../components/AudioPlayer';
+import { FilterInput } from '../components/FilterInput';
+
+export default function Home() {
+  const [genreFilter, setGenreFilter] = useState('');
+  const [artistFilter, setArtistFilter] = useState('');
+  const [albumFilter, setAlbumFilter] = useState('');
+    const [activeSong, setActiveSong] = useState(songList[0]);
+    return (
+      <div>
+        <header>
+          <img src="/play.svg" alt="play" />
+          <h1>SOUNDIFY</h1>
+        </header>
+        <AudioPlayer activeSong={activeSong} />;<div className="song-list">
+        <section className="filter-section">
+          <FilterInput
+            options={genreList} // genreList from assets directory
+            value={genreFilter} // genreFilter from useState()
+            filterSetter={setGenreFilter} // setGenreFilter from useState()
+            name="genre"
+          />
+          <FilterInput
+            options={genreList} // genreList from assets directory
+            value={genreFilter} // genreFilter from useState()
+            filterSetter={setGenreFilter} // setGenreFilter from useState()
+            name="artist"
+
+  />
+           <FilterInput
+            options={genreList} // genreList from assets directory
+            value={genreFilter} // genreFilter from useState()
+            filterSetter={setGenreFilter} // setGenreFilter from useState()
+            name="album"
+  />
+           </section>
+          <div className="song-header">
+            <div>name</div>
+            <div>album </div>
+            <div>Year </div>
+            <div>Artist </div>
+            <div>play</div>
+            <div>genre</div>
+          </div>
+
+
+          {songList
+  .filter((song) => {
+    let isVisible = true; // by default all songs are visible
+
+    // if there is a genre selected and this dont match to the genre of this song hide the song
+    if (genreFilter && genreFilter !== song.genre) {
+      isVisible = false;
+    if (artistFilter && genreFilter !== song.genre) {
+        isVisible = false;
+    if (albumFilter && genreFilter !== song.genre) {
+          isVisible = false;
+    return isVisible;
+    }.map((song) => {
+            return (
+              <div
+                key={song.id}
+                className="song-container"
+                onDoubleClick={() => {
+                  setActiveSong(song);
+                }}
+              >
+                <div className="song-title">{song.name}</div>
+                <div>{song.album}</div>
+                <div>{song.release}</div>
+                <div>{song.artist}</div>
+                <button
+                  className="song-play"
+                  onClick={() => {
+                    setActiveSong(song);
+                  }}
+                >
+                  <img src="/play.svg" alt="play" />
+                </button>
+                <div>{song.genre}</div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    );
+  }
 
 // ⚠️⚠️⚠️
 // ⚠️⚠️⚠️ PLEASE IGNORE this section until you have completed steps  1, 2 and 3 ⚠️⚠️⚠️
