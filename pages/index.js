@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { AudioPlayer } from '../components/AudioPlayer';
 import { FilterInput } from '../components/FilterInput';
 
-export default function Home() {
+export default function Home({ albums, artists, genres, songs }) {
   const [activeSong, setActiveSong] = useState(song[0]);
   const [genreFilter, setGenreFilter] = useState('');
   const [artistFilter, setArtistFilter] = useState('');
@@ -94,7 +94,7 @@ export default function Home() {
     </div>
   );
 }
-export default function Home({ albums, artists, genres, songs }) {
+export async function getServerSideProps() {
   const { getAlbums, getArtists, getGenres, getSongs } = await import(
     '../utils/database'
   );
