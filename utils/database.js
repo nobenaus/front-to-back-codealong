@@ -16,11 +16,11 @@ export async function getArtists() {
 //    "heroku-postbuild": "yarn migrate up && yarn build",
 // - after that move to pages/index.js file again and scroll until the end of that file for the step 4 instructions.
 
-export async function getAlbums() {
-  const albums = await sql`
-  SELECT * FROM albums
+export async function getArtists() {
+  const artists = await sql`
+  SELECT * FROM artists
   `;
-  return albums;
+  return artists;
 }
 
 export async function getGenres() {
