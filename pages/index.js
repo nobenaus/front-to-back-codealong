@@ -3,7 +3,7 @@ import { AudioPlayer } from '../components/AudioPlayer';
 import { FilterInput } from '../components/FilterInput';
 
 export default function Home({ albums, artists, genres, songs }) {
-  const [activeSong, setActiveSong] = useState(song[0]);
+  const [activeSong, setActiveSong] = useState(songs[0]);
   const [genreFilter, setGenreFilter] = useState('');
   const [artistFilter, setArtistFilter] = useState('');
   const [albumFilter, setAlbumFilter] = useState('');
