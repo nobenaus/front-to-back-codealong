@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start -p ${PORT:-\"3000\"}",
+    "heroku-postbuild": "yarn migrate up && yarn build",
     "migrate": "dotenv ley"
   },
   "dependencies": {
@@ -19,9 +20,5 @@
     "react": "17.0.2",
     "react-dom": "17.0.2"
   },
-  "cacheDirectories": [
-    ".next/cache"
-  ]
+  "cacheDirectories": [".next/cache"]
 }
-"start": "next start -p ${PORT:-\"3000\"}",
-"heroku-postbuild": "yarn migrate up && yarn build",
