@@ -1,0 +1,22 @@
+{
+  "name": "Soundify",
+  "short_name": "Soundify",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#750909",
+  "background_color": "#750909",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "/icons/soundify-icon-192-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/soundify-icon-512-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
