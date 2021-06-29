@@ -23,8 +23,6 @@ h1 {
 .song-container,
 .song-header {
   background-color: rgb(17, 17, 17);
-  display: grid;
-  grid-template-columns: 4fr 2fr 0.5fr 2fr 0.5fr 1fr;
   color: aliceblue;
   align-items: center;
   width: 100vw;
@@ -32,16 +30,23 @@ h1 {
   margin: 0;
   padding: 0.7em 0;
   text-align: left;
+  padding-left: 20px;
+}
+.song-container {
+  display: grid;
+  grid-template-columns: 3em 3fr 2fr 1fr;
+  grid-template-rows: 1.4em 1.4em;
+  gap: 8px;
 }
 .song-container:hover {
   background-color: rgb(173, 172, 172);
   color: rgb(27, 27, 27);
 }
 .song-header {
+  display: none;
   background-color: rgb(112, 112, 112);
   color: rgb(231, 231, 231);
   padding: 5px;
-  padding-left: 20px;
   position: sticky;
   top: 0;
 }
@@ -53,21 +58,23 @@ h1 {
 .song-player {
   color: white;
   margin: 2.5vh auto;
-  height: 10vw;
-  max-width: 50vw;
+  max-width: 768px;
   display: grid;
   align-items: center;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
+  gap: 20px 10px;
   background-color: rgb(17, 17, 17);
   border-radius: 2px;
-  padding: 2em;
+  padding: 20px;
 }
 
 .audio-element {
   display: flex;
   justify-content: center;
 }
-
+audio {
+  width: 100%;
+}
 .song-info {
   text-align: center;
 }
@@ -77,14 +84,21 @@ h1 {
   height: 60vh;
   overflow: scroll;
 }
-
+.song-title + div,
+.song-title + div + div,
+.song-play + div {
+  display: none;
+}
 .song-play {
+  order: -1;
+  grid-row: span 2;
+  margin-right: 10px;
   cursor: pointer;
   justify-self: left;
   border: none;
   border-radius: 50%;
-  width: 2em;
-  height: 2em;
+  width: 3em;
+  height: 3em;
   padding: 0px;
   background-color: rgb(27, 27, 27);
 }
@@ -96,7 +110,7 @@ header {
   background-color: rgba(129, 1, 1, 0.842);
   color: #fff;
   margin: 0;
-  height: 8.5vh;
+  height: 64px;
   display: flex;
   align-items: center;
   padding-left: 20px;
@@ -117,9 +131,52 @@ header img {
 
 .filter-section {
   margin: 0 auto;
-  width: 50vw;
+  max-width: 768px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr;
   gap: 3px;
   margin-bottom: 1em;
+}
+@media (min-width: 600px) {
+  .filter-section {
+    grid-template-columns: repeat(3, minmax(200px, 1fr));
+  }
+
+  .song-title + div,
+  .song-title + div + div,
+  .song-play + div {
+    display: block;
+  }
+}
+
+@media (min-width: 768px) {
+  .song-player {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 40px;
+  }
+
+  .song-container,
+  .song-header {
+    gap: 6px;
+    grid-template-columns: 4fr 2fr 0.5fr 2fr 0.5fr 1fr;
+    grid-template-rows: initial;
+  }
+
+  .song-header {
+    display: grid;
+  }
+
+  .song-play {
+    order: 0;
+    grid-row: initial;
+    margin-right: 0;
+    width: 2em;
+    height: 2em;
+  }
+}
+
+@media (min-width: 1080px) {
+  .filter-section {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
